@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/haluktiras/event-processor.svg?style=svg)](https://app.circleci.com/pipelines/github/haluktiras/tictactoe)
+
 # Simple TicTacToe Game #
 by Mustafa Haluk Tiras
 
