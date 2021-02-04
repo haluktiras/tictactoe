@@ -10,6 +10,13 @@ public class BoardPrinter {
         this.printStream = printStream;
     }
 
+    public void initBoard() {
+        printStream.print("Game Board Creation…");
+        printGameBoard(new GameBoard());
+        printStream.println("Board Created.");
+        printStream.println("The game will start with player X");
+    }
+
     public void printGameBoard(GameBoard board) {
         printStream.println();
         printRow(0, board);
@@ -17,7 +24,7 @@ public class BoardPrinter {
         printRow(1, board);
         printStream.println("-+-+-");
         printRow(2, board);
-        printStream.println("-----------------------------------------");
+        printStream.println("--------------------------");
     }
 
     private void printRow(int row, GameBoard board) {
