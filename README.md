@@ -5,14 +5,19 @@ by Mustafa Haluk Tiras
 
 ## Getting started ##
 ### Prerequisites ###
-* JDK 13
+* JDK 1.8
 * Maven 4
 
 ### Product BackLog ###
-*[x] Implement CircleCI
+* [x] Implement CircleCI
+* [x] Implement Testing Framework (JUnit 4)
+* [x] Create the gaming board
 * Dockerize the project
-* Implement Testing Framework (JUnit 5)
-* Create the gaming board
-* ...
+* 
+
+## Test Coverage
+|  Element                         | Class %      | Method %     |  Line %      |
+|:--------------------------------:|:------------:|:------------:|:------------:|
+| `com.haluktiras.game.tictactoe`  |  85% (6/7)   |  85% (40/47) | 79%(161/202) |
 
 
