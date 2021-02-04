@@ -73,9 +73,30 @@ public class GameRunnerTest {
         assertThat(runner.getGameState().getCurrentPlayer()).isEqualTo(Player.O);
     }
 
+    @Test
+    public void run2PlayersModeTest() throws InterruptedException {
+        Scanner scanner = scannerWithInputs("2", "1,1", "2,1", "1,2", "2,2", "1,0");
+        GameRunner runner = spy(new GameRunner(scanner, printStream));
+        GameState nextState = mock(GameState.class);
+        when(nextState.getLastMove()).thenReturn(new Position(0, 0));
+
+        runner.run();
+        verify(runner, atLeast(1)).run2PlayersMode();
+    }
+
+    @Test
+    public void runBotModeTest() throws InterruptedException {
+        Scanner scanner = scannerWithInputs("3");
+        GameRunner runner = spy(new GameRunner(scanner, printStream));
+        GameState nextState = mock(GameState.class);
+        when(nextState.getLastMove()).thenReturn(new Position(0, 0));
+
+        runner.run();
+        verify(runner).runBotMode();
+    }
+
     private Scanner scannerWithInputs(String... inputs) {
         String joinedInputs = join(inputs).with("\n");
-        Scanner scanner = new Scanner(joinedInputs);
-        return scanner;
+        return new Scanner(joinedInputs);
     }
 }
