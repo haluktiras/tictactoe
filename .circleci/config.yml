@@ -5,5 +5,5 @@ workflows:
   build-and-publish-docker-image:
     jobs:
       - docker/publish:
-          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          image: haluktiras/tictactoe
           use-docker-credentials-store: true
