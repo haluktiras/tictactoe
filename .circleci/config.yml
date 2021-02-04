@@ -7,18 +7,18 @@ workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
-
-
-jobs:
   build_docker_image:
-    docker:
-      - image: myimage:latest
-    steps:
-      - checkout
-      - run:
-          name: Set up tag
-          command: echo "export TAG=0.1.$CIRCLE_SHA1" >> $BASH_ENV
-      - run:
-          name: Build Docker image
-          command: |
-            docker build -t ci-image:latest
+    jobs:
+      build_docker_image:
+        docker:
+          - image: myimage:latest
+        steps:
+          - checkout
+          - run:
+              name: Set up tag
+              command: echo "export TAG=0.1.$CIRCLE_SHA1" >> $BASH_ENV
+          - run:
+              name: Build Docker image
+              command: |
+                docker build -t ci-image:latest
+
