@@ -38,7 +38,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests! and gen code coverage
-      - run: mvn install dependency:go-offline -Dmaven.test.skip=true
+      - run: mvn clean test jacocoTestReport
 
       - run:
           name: Save test results
