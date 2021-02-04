@@ -9,7 +9,7 @@ public class GameRunner {
     static final String INSTRUCTION_TEXT =
             "Enter '<row>,<col>' to play a position. For example, '0,2'.";
 
-    private GameState game;
+    private GameState gameState;
 
     private BoardPrinter boardPrinter;
     private Scanner scanner;
@@ -17,7 +17,7 @@ public class GameRunner {
 
     public GameRunner(Scanner scanner,
                                PrintStream printStream) {
-        this.game = new GameState();
+        this.gameState = new GameState();
         this.boardPrinter = new BoardPrinter(printStream);
         this.scanner = scanner;
         this.printStream = printStream;
@@ -25,19 +25,19 @@ public class GameRunner {
 
     public void run() throws InterruptedException {
         printInstructions();
-        while (!game.isOver()) {
+        while (!gameState.isOver()) {
             moveHuman();
-            boardPrinter.printGameBoard(game.getGameBoard());
-            if(game.isOver()) break;
+            boardPrinter.printGameBoard(gameState.getGameBoard());
+            if(gameState.isOver()) break;
             Thread.sleep(1955);
             moveComputer();
-            boardPrinter.printGameBoard(game.getGameBoard());
+            boardPrinter.printGameBoard(gameState.getGameBoard());
         }
         printGameOver();
     }
 
-    GameState getGame() {
-        return game;
+    GameState getGameState() {
+        return gameState;
     }
 
     void moveComputer() {
@@ -47,8 +47,8 @@ public class GameRunner {
                 computerPosition = generateRandomPosition();
             } while (computerPosition == null);
 
-            if (game.play(computerPosition.getRow(), computerPosition.getCol())) {
-                game.switchPlayer();
+            if (gameState.play(computerPosition.getRow(), computerPosition.getCol())) {
+                gameState.switchPlayer();
                 printStream.print("Player O [ "
                         + computerPosition.getRow()
                         + ", "
@@ -69,8 +69,8 @@ public class GameRunner {
             } while (userPosition == null);
 
             try {
-                if (game.play(userPosition.getRow(), userPosition.getCol())) {
-                    game.switchPlayer();
+                if (gameState.play(userPosition.getRow(), userPosition.getCol())) {
+                    gameState.switchPlayer();
                     return;
                 } else {
                     printStream.printf("(%d,%d) has already been taken. ", userPosition.getRow(),
@@ -86,9 +86,9 @@ public class GameRunner {
     }
 
     private void printGameOver() {
-        if (game.hasWin(Player.X)) {
+        if (gameState.hasWin(Player.X)) {
             ((PrintStream) printStream).println("Player X won.");
-        } else if (game.hasWin(Player.O)) {
+        } else if (gameState.hasWin(Player.O)) {
             printStream.println("Player O won.");
         } else {
             printStream.println("Game ended in a draw.");

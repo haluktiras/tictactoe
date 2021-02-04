@@ -57,9 +57,9 @@ public class GameRunnerTest {
         Scanner scanner = scannerWithInputs("1,1", "0,0");
         GameRunner runner = new GameRunner(scanner, printStream);
 
-        assertThat(runner.getGame().getCurrentPlayer()).isEqualTo(Player.X);
+        assertThat(runner.getGameState().getCurrentPlayer()).isEqualTo(Player.X);
         runner.moveHuman();
-        assertThat(runner.getGame().getCurrentPlayer()).isEqualTo(Player.O);
+        assertThat(runner.getGameState().getCurrentPlayer()).isEqualTo(Player.O);
     }
 
     @Test
@@ -68,9 +68,9 @@ public class GameRunnerTest {
         GameState nextState = mock(GameState.class);
         when(nextState.getLastMove()).thenReturn(new Position(0, 0));
 
-        assertThat(runner.getGame().getCurrentPlayer()).isEqualTo(Player.X);
+        assertThat(runner.getGameState().getCurrentPlayer()).isEqualTo(Player.X);
         runner.moveComputer();
-        assertThat(runner.getGame().getCurrentPlayer()).isEqualTo(Player.O);
+        assertThat(runner.getGameState().getCurrentPlayer()).isEqualTo(Player.O);
     }
 
     private Scanner scannerWithInputs(String... inputs) {

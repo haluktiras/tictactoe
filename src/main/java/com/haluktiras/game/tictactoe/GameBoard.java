@@ -9,24 +9,24 @@ public class GameBoard {
     private static final int COLS = 3;
     private static final int ROWS = 3;
 
-    private final Player[][] board;
+    private final Player[][] playersBoard;
 
     public GameBoard() {
-        board = new Player[ROWS][COLS];
+        playersBoard = new Player[ROWS][COLS];
     }
 
-    public GameBoard(Player[][] board) {
-        if (board == null) {
+    public GameBoard(Player[][] playersBoard) {
+        if (playersBoard == null) {
             throw new IllegalArgumentException("board cannot be null");
         }
-        this.board = board;
+        this.playersBoard = playersBoard;
     }
 
     public GameBoard(GameBoard other) {
-        board = new Player[ROWS][COLS];
+        playersBoard = new Player[ROWS][COLS];
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
-                board[row][col] = other.board[row][col];
+                playersBoard[row][col] = other.playersBoard[row][col];
             }
         }
     }
@@ -36,24 +36,24 @@ public class GameBoard {
         if (player == null) {
             throw new IllegalArgumentException("cannot mark null player");
         }
-        if (board[row][col] != null) {
+        if (playersBoard[row][col] != null) {
             return false;
         } else {
-            board[row][col] = player;
+            playersBoard[row][col] = player;
             return true;
         }
     }
 
     public Player getMark(int row, int col) {
         validatePosition(row, col);
-        return board[row][col];
+        return playersBoard[row][col];
     }
 
     public List<Position> getOpenPositions() {
         ArrayList<Position> positions = new ArrayList<Position>();
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
-                if (board[row][col] == null) {
+                if (playersBoard[row][col] == null) {
                     positions.add(new Position(row, col));
                 }
             }
@@ -66,7 +66,7 @@ public class GameBoard {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
-                Player p = board[row][col];
+                Player p = playersBoard[row][col];
                 if (p != null) {
                     sb.append(p);
                 } else {
@@ -88,7 +88,7 @@ public class GameBoard {
         }
         GameBoard other = (GameBoard) obj;
         for (int row = 0; row < ROWS; row++) {
-            if (!Arrays.equals(board[row], other.board[row])) {
+            if (!Arrays.equals(playersBoard[row], other.playersBoard[row])) {
                 return false;
             }
         }
@@ -100,7 +100,7 @@ public class GameBoard {
         final int prime = 31;
         int result = 1;
         for (int row = 0; row < ROWS; row++) {
-            result = prime * result + Arrays.hashCode(board[row]);
+            result = prime * result + Arrays.hashCode(playersBoard[row]);
         }
         return result;
     }
