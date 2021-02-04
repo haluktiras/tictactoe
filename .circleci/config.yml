@@ -55,4 +55,4 @@ jobs:
 
       - run:
           name: Send to CodeCov
-          command: bash <(curl -s https://codecov.io/bash) -t uuid-repo-token
+          command: bash <(curl -s https://codecov.io/bash) -t f2f363f7-8eaa-452d-846c-313a12bf432e
