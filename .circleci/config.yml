@@ -15,8 +15,6 @@ jobs:
       - image: myimage:latest
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_chaching: true
       - run:
           name: Set up tag
           command: echo "export TAG=0.1.$CIRCLE_SHA1" >> $BASH_ENV
