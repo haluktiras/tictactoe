@@ -1,9 +1,9 @@
-orbs:
-  docker: circleci/docker@1.5.0
 version: 2.1
+
+orbs:
+  maven: circleci/maven@0.0.12
+
 workflows:
-  build-and-publish-docker-image:
+  maven_test:
     jobs:
-      - docker/publish:
-          image: haluktiras/tictactoe
-          use-docker-credentials-store: true
+      - maven/test # checkout, build, test, and upload test results and create the docker image
