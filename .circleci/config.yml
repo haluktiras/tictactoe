@@ -1,9 +1,5 @@
 version: 2.1
 
-machine:
-  services:
-    - docker
-
 orbs:
   maven: circleci/maven@0.0.12
 
@@ -27,7 +23,7 @@ jobs:
       - checkout
       - run:
           name: Set up tag
-          command: echo "export TAG=0.1.$CIRCLE_SHA1" >> $BASH_ENV
+          command: echo "export TAG=openjdk$CIRCLE_SHA1" >> $BASH_ENV
       - run:
           name: Build Docker image
           command: |
