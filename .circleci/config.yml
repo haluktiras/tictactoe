@@ -7,8 +7,6 @@ workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
-  build_docker_image:
-    jobs:
       build_docker_image:
         docker:
           - image: myimage:latest
