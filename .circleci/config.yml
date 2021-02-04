@@ -15,7 +15,7 @@ workflows:
 jobs:
   build_docker_image:
     docker:
-      - image: myimage:latest
+      - image: ci-image:latest
     steps:
       - checkout
       - run:
