@@ -9,7 +9,7 @@ by Mustafa Haluk Tiras
 * Maven 4
 
 ### Product BackLog ###
-* Implement CircleCI
+*[x] Implement CircleCI
 * Dockerize the project
 * Implement Testing Framework (JUnit 5)
 * Create the gaming board
