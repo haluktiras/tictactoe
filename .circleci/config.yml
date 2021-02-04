@@ -15,7 +15,7 @@ workflows:
 jobs:
   build_docker_image:
     docker:
-      - image: ci-image:latest
+      - image: openjdk:8-jdk
         auth:
           username: mhalukt
           password: $DOCKERHUB_PASSWORD
