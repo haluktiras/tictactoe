@@ -22,9 +22,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set up tag
-          command: echo "export TAG=openjdk$CIRCLE_SHA1" >> $BASH_ENV
-      - run:
           name: Build Docker image
           command: |
             docker build -t ci-image:latest
